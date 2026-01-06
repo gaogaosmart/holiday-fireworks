@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>放假倒计时</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="loading">
+  <!-- 双 Canvas：trails 做残影，main 画当前帧 -->
+  <div class="canvas-container">
+    <canvas id="trails-canvas"></canvas>
+    <canvas id="main-canvas"></canvas>
+  </div>
+
+  <!-- 左上角倒计时 -->
+  <div class="hud">
+    <div class="hud__title">放假倒计时</div>
+    <div class="hud__time" id="countdownText">--</div>
+    <div class="hud__hint">点击屏幕也可以手动发射烟花</div>
+  </div>
+
+  <!-- 右上角按钮 -->
+  <button class="btn btn--primary open-menu-btn">设置</button>
+
+  <!-- 设置面板 -->
+  <div class="menu hide">
+    <div class="menu__inner">
+      <div class="menu__header">
+        <div>设置</div>
+        <button class="btn btn--ghost close-menu-btn">关闭</button>
+      </div>
+
+      <div class="form-option">
+        <label>目标时间（本地时间）</label>
+        <input class="countdown-target" type="datetime-local" step="1" />
+      </div>
+
+      <div class="form-option form-option--row">
+        <label>自动发射</label>
+        <input class="auto-launch" type="checkbox" />
+      </div>
+
+      <div class="form-option form-option--row">
+        <label>保留轨迹（长曝光）</label>
+        <input class="long-exposure" type="checkbox" />
+      </div>
+
+      <div class="form-option">
+        <label>烟花文字（每行一个，可选）</label>
+        <textarea class="firework-text" rows="5" placeholder="放假啦&#10;Happy Holiday&#10;🎆🎉"></textarea>
+        <div class="note">提示：开启“文字烟花”后会随机显示这些文字。</div>
+      </div>
+
+      <div class="form-option form-option--row">
+        <label>文字烟花</label>
+        <input class="word-shell" type="checkbox" />
+      </div>
+
+      <div class="form-option">
+        <button class="btn btn--primary launch-now-btn" type="button">立刻放一发</button>
+      </div>
+
+      <div class="footer">
+        <div>目标日期默认：2026-01-23 00:00:00</div>
+        <div class="small">适合 GitHub Pages 直接部署</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 加载顺序：配置 -> 工具 -> 舞台 -> 烟花 -> 入口 -->
+  <script src="config.js"></script>
+  <script src="assets/js/mymath.js"></script>
+  <script src="assets/js/stage.js"></script>
+  <script src="assets/js/fireworks.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
